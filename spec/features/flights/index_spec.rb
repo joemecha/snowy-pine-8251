@@ -48,10 +48,29 @@ RSpec.describe 'flights index page' do
   end
 
   it "displays a list of all the flight numbers and the name of the airline next to each one" do
-      expect(page).to have_content()
-      expect(page).to_not have_content()
+      expect(page).to have_content(@flight_1.number)
+      expect(page).to have_content(@flight_1.airline.name)
+      expect(page).to have_content(@flight_2.number)
+      expect(page).to have_content(@flight_2.airline.name)
+      expect(page).to have_content(@flight_3.number)
+      expect(page).to have_content(@flight_3.airline.name)
+      expect(page).to have_content(@flight_4.number)
+      expect(page).to have_content(@flight_4.airline.name)
+      expect(page).to have_content(@flight_5.number)
+      expect(page).to have_content(@flight_5.airline.name)
+      expect(page).to have_content(@flight_6.number)
+      expect(page).to have_content(@flight_6.airline.name)
+      expect(page).to have_content(@flight_7.number)
+      expect(page).to have_content(@flight_7.airline.name)
+      expect(page).to have_content(@flight_8.number)
+      expect(page).to have_content(@flight_8.airline.name)
+      expect(page).to have_content(@flight_9.number)
+      expect(page).to have_content(@flight_9.airline.name)
+      expect(page).to have_content(@flight_10.number)
+      expect(page).to have_content(@flight_10.airline.name)
   end
-  it "under each flight, it displays the names of all that flight's passengers" do
+
+  xit "under each flight, it displays the names of all that flight's passengers" do
   end
 
   xit "next to each passenger, it has a button to remove that passenger from the flight" do
