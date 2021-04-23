@@ -1,0 +1,13 @@
+<h1><%= @airline.name %></h1>
+
+<section id="passengers">
+  <h3> Passenger List </h3>
+  <br>
+  <% @airline.passenger_list.each do |passenger_name| %>
+    <ul>
+      <section id="<%=passenger_name %>">
+        <li>Name: <%= passenger_name %> </li>
+      </section>
+    </ul>
+  <% end %>
+</section>
