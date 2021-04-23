@@ -81,7 +81,7 @@ RSpec.describe 'flights index page' do
     end
   end
 
-  xit "next to each passenger, it has a button to remove that passenger from the flight" do
+  it "next to each passenger, it has a button to remove that passenger from the flight" do
     within("#flight-#{@flight_1.id}") do
       within("#passenger-#{@passenger_1.id}") do
         expect(page).to have_content(@passenger_1.name)
