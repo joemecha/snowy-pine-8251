@@ -4,8 +4,14 @@
   <br>
   <% @flights.each do |flight| %>
     <section id="flight-<%=flight.id %>">
-      <h4>Flight number: <%= flight.number %>
-      <p>Airline: <%= flight.airline.name %> </p>
+      <h4>Flight number: <%= flight.number %> Airline: <%= flight.airline.name %> </h4>
+      <ul>
+        <% flight.passengers.each do |passenger| %>
+        <section id="passenger-<%=passenger.id%>">
+          <li> <%= passenger.name %> </li>
+        </section>
+        <% end %>
+      </ul>
     </section>
   <% end %>
   <br>

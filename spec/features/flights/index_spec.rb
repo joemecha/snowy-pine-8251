@@ -7,6 +7,7 @@ RSpec.describe 'flights index page' do
     @passenger_3 = Passenger.create!(name: "Passenger_3", age: 25)
     @passenger_4 = Passenger.create!(name: "Passenger_4", age: 50)
     @passenger_5 = Passenger.create!(name: "Passenger_5", age: 16)
+    @passenger_6 = Passenger.create!(name: "Passenger_6", age: 42)
 
     @airline_1 = Airline.create!(name: "Universe Gliders")
     @airline_2 = Airline.create!(name: "Average Airplanes")
@@ -42,7 +43,7 @@ RSpec.describe 'flights index page' do
     FlightPassenger.create(flight_id: @flight_9.id, passenger_id: @passenger_4.id)
     FlightPassenger.create(flight_id: @flight_10.id, passenger_id: @passenger_5.id)
 
-    visit '/flights'
+    visit flights_path
   end
 
   it "displays a list of all the flight numbers and the name of the airline next to each one" do
@@ -68,16 +69,27 @@ RSpec.describe 'flights index page' do
       expect(page).to have_content(@flight_10.airline.name)
   end
 
-  xit "under each flight, it displays the names of all that flight's passengers" do
+  it "under each flight, it displays the names of all that flight's passengers" do
+    within("#flight-#{@flight_1.id}") do
+      expect(page).to have_content(@passenger_1.name)
+      expect(page).to have_content(@passenger_2.name)
+      expect(page).to have_content(@passenger_3.name)
+      expect(page).to have_content(@passenger_4.name)
+      expect(page).to have_content(@passenger_5.name)
+
+      expect(page).to_not have_content(@passenger_6.name)
+    end
   end
 
   xit "next to each passenger, it has a button to remove that passenger from the flight" do
-    within("#passenger-#{@passenger_1.id}") do
-      expect(page).to have_content()
+    within("#flight-#{@flight_1.id}") do
+      within("#passenger-#{@passenger_1.id}") do
+        expect(page).to have_content(@passenger_1.name)
 
-      click_button "Remove Passenger"
+        click_button "Remove Passenger"
 
-      expect(page).to_not have_content()
+        expect(page).to_not have_content(@passenger_1.name)
+      end
     end
   end
 end
