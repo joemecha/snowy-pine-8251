@@ -41,5 +41,8 @@ RSpec.describe Airline, type: :model do
         expect(@airline_1.passenger_list).to eq(expected)
       end
     end
+
+    it "#frequent_list" do   
+    end
   end
 end
